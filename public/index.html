@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather Monitor</title>
+  <style>
+    body { font-family: Arial; text-align: center; margin-top: 100px; }
+    h1 { color: #0078d7; }
+    button { padding: 10px 20px; }
+  </style>
+</head>
+<body>
+  <h1>🌤 Weather Monitor App</h1>
+  <button onclick="getWeather()">Check Weather</button>
+  <p id="output"></p>
+  
+  <script>
+    async function getWeather() {
+      const res = await fetch('/api/weather');
+      const data = await res.json();
+      document.getElementById('output').innerText = 
+        `${data.location} → ${data.temperature} → ${data.condition}`;
+    }
+  </script>
+</body>
+</html>
